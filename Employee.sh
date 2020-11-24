@@ -2,13 +2,17 @@
 
 isPartTime=1
 isFullTime=2
-Totalsalary=0
 EmpRateperHr=20
 WorkingDays=20
+maxHrsInmonth=100
 
-for ((day=1;day<=WorkingDays;day++))
+TotalempHr=0
+TotalWorkingDay=0
+
+while [[ $TotalempHr -le $maxHrsInmonth && $TotalWorkingDay -le $WorkingDays ]]
 do
-        empcheck=$(($RANDOM%3))
+        (($TotalWorkingDay+1))
+       empcheck=$(($RANDOM%3))
 
 	case $empcheck in
                         $isFullTime)
