@@ -1,21 +1,27 @@
 #! /bin/bash
 
+echo -ne "\n1. Part Time \n2. Full Time \n\nEnter Empolyee Type : "
+read choice
+
 WagePerHr=20
 FullDayHrs=8
 PartTimeHrs=4
 
-var=$(($RANDOM%3))
+case $choice in
 
-if [ $var -eq 1 ]
-then
-        dailywages=$(($WagePerHr*$FullDayHrs))
-	echo -ne "\n The Full Day Wage Of Employee Is  : $dailywages\n"
+	1)
+        		dailywages=$(($WagePerHr*$PartTimeHrs))
+        		echo -ne "\n The Part Time Wages Of Empoyee Is : $dailywages \n"
+			;;
 
-elif [ $var -eq 2 ]
-then
-        dailywages=$(($WagePerHr*$PartTimeHrs))
-        echo -ne "\n The Part Time Wage Of Employee Is  : $dailywages\n"
+	2)
 
-else
-        echo -ne "\n Employee Is Not Present...!\n"
-fi
+        		dailywages=$(($WagePerHr*$FullDayHrs))
+        		echo -ne "\n The Daily Wages Of Empoyee Is : $dailywages \n"
+			;;
+
+	*)
+	        	echo -ne "\n The Employee Is Absent \n"
+			;;
+esac
+
