@@ -1,3 +1,11 @@
 #! /bin/bash
 
-echo -ne "\n* Welcome To Employee Wages *\n "
+var=$(($RANDOM%2))
+
+if [ $var -eq 1 ]
+then
+	echo -ne "\n Employee Is Present\n"
+else
+	echo -ne "\n Employee Is Not Present\n"
+fi
+
