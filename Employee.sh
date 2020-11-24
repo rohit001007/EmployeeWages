@@ -1,27 +1,32 @@
 #! /bin/bash
 
-echo -ne "\n1. Part Time \n2. Full Time \n\nEnter Empolyee Type : "
-read choice
+isPartTime=1
+isFullTime=2
+Totalsalary=0
+EmpRateperHr=20
+WorkingDays=20
 
-WagePerHr=20
-FullDayHrs=8
-PartTimeHrs=4
+for ((day=1;day<=WorkingDays;day++))
+do
+        empcheck=$(($RANDOM%3))
 
-case $choice in
+	case $empcheck in
+                        $isFullTime)
+                                        empHrs=8
+                                ;;
+                        $isPartTime)
+                                        empHrs=4
+                                ;;
 
-	1)
-        		dailywages=$(($WagePerHr*$PartTimeHrs))
-        		echo -ne "\n The Part Time Wages Of Empoyee Is : $dailywages \n"
-			;;
+                                *)
+                                        empHrs=0
+                                ;;
 
-	2)
+                esac
+        salary=$(($empHrs*$EmpRateperHr))
+ Totalsalary=$(($Totalsalary+$salary))
+done
 
-        		dailywages=$(($WagePerHr*$FullDayHrs))
-        		echo -ne "\n The Daily Wages Of Empoyee Is : $dailywages \n"
-			;;
 
-	*)
-	        	echo -ne "\n The Employee Is Absent \n"
-			;;
-esac
+echo -ne "\n Total Salary For Month Of Employee Is : $Totalsalary\n"
 
