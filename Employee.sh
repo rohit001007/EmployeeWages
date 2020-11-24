@@ -9,6 +9,8 @@ maxHrsInmonth=100
 TotalempHr=0
 TotalWorkingDay=0
 
+declare -A dailywages
+
 function getWorkingHrs ()
 {
         case $1 in
@@ -39,7 +41,7 @@ do
         (($TotalWorkingDays+1))
 	empHrs=$( getWorkingHrs $(($RANDOM%3)) )
 	TotalempHrs=$(($TotalempHrs+$empHrs))
-	dailywages[$TotalWorkingDays]=$( getEmpwage $empHrs )
+	dailywages["Day"$TotalWorkingDays]=$( getEmpwage $empHrs )
 done
 
 totalsalary=$(($TotalempHrs*$EmpRateperHr))
